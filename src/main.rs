@@ -1,4 +1,5 @@
 mod day_1;
+mod day_2;
 
 use std::fs::read_to_string;
 use clap::Parser;
@@ -43,6 +44,11 @@ fn main() {
     1 => match args.part {
       1 => day_1::part1::part1(lines),
       2 => day_1::part2::part2(lines),
+      _ => panic!("Invalid part {}", args.part),
+    },
+    2 => match args.part {
+      1 => day_2::part1::part1(lines),
+      2 => day_2::part2::part2(lines),
       _ => panic!("Invalid part {}", args.part),
     },
     _ => panic!("Invalid day {}", args.day),
