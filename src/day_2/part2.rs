@@ -6,7 +6,7 @@ struct Position {
   aim: i32,
 }
 
-pub fn part2(lines: Vec<String>) -> i32 {
+pub fn part2(lines: Vec<String>) -> i64 {
   let instructions = lines.iter().map(|line| {
     let parts = line.split(" ").collect::<Vec<&str>>();
     let instruction = match parts[0] {
@@ -25,5 +25,5 @@ pub fn part2(lines: Vec<String>) -> i32 {
       Instruction::Up => Position { horizontal: position.horizontal, depth: position.depth, aim: position.aim - command.value },
     }
   });
-  final_position.horizontal * final_position.depth
+  (final_position.horizontal * final_position.depth) as i64
 }

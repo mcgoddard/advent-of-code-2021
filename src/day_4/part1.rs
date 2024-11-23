@@ -1,6 +1,6 @@
 use crate::day_4::lib::{ parse_card_string, check_card, calculate_score };
 
-pub fn part1(lines: Vec<String>) -> i32 {
+pub fn part1(lines: Vec<String>) -> i64 {
   let mut called_numbers = vec![];
   let numbers_to_call = lines[0].split(",").map(|number| number.parse::<i32>().unwrap()).collect::<Vec<i32>>();
   let cards = parse_card_string(lines);

@@ -1,4 +1,4 @@
-pub fn part2(lines: Vec<String>) -> i32 {
+pub fn part2(lines: Vec<String>) -> i64 {
   let parsed = lines.iter().map(|line| {
     let substrings: Vec<char> = line.chars().collect();
     substrings.iter().map(|substring| substring.to_digit(10).unwrap()).collect::<Vec<u32>>()

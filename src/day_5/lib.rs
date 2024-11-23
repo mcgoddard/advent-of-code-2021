@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn count_overlaps(grid: HashMap<Point, i32>) -> i32 {
+pub fn count_overlaps(grid: HashMap<Point, i32>) -> i64 {
   let mut count = 0;
   for (_, value) in grid {
     if value > 1 {

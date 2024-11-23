@@ -1,4 +1,4 @@
-pub fn part1(lines: Vec<String>) -> i32 {
+pub fn part1(lines: Vec<String>) -> i64 {
   let parsed = lines.iter().map(|line| {
     let substrings: Vec<char> = line.chars().collect();
     substrings.iter().map(|substring| substring.to_digit(10).unwrap()).collect::<Vec<u32>>()
@@ -24,5 +24,5 @@ pub fn part1(lines: Vec<String>) -> i32 {
   }
   let gamma_rate = i32::from_str_radix(&gamma_bin, 2).unwrap();
   let epsilon_rate = i32::from_str_radix(&epsilon_bin, 2).unwrap();
-  gamma_rate * epsilon_rate
+  (gamma_rate * epsilon_rate) as i64
 }

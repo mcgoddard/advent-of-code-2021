@@ -43,13 +43,13 @@ pub fn check_card(card: &Vec<Vec<i32>>, called_numbers: &Vec<i32>) -> bool {
   false
 }
 
-pub fn calculate_score(card: &Vec<Vec<i32>>, called_numbers: &Vec<i32>, called_number: i32) -> i32 {
+pub fn calculate_score(card: &Vec<Vec<i32>>, called_numbers: &Vec<i32>, called_number: i32) -> i64 {
   let unmarked = card.iter().map(|row| {
     row.iter().filter(|number| !called_numbers.contains(number)).collect::<Vec<&i32>>()
   }).collect::<Vec<Vec<&i32>>>();
   let unmarked_sum = unmarked.iter().map(|row| {
     row.iter().fold(0, |acc, number| acc + *number)
   }).fold(0, |acc, number| acc + number);
-  unmarked_sum * called_number
+  (unmarked_sum * called_number) as i64
 }
 

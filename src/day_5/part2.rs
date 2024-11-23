@@ -1,7 +1,7 @@
 use std::{cmp::{max, min}, collections::HashMap};
 use super::lib::{ Instruction, Point, parse_lines, count_overlaps };
 
-pub fn part2(lines: Vec<String>) -> i32 {
+pub fn part2(lines: Vec<String>) -> i64 {
   let instructions = parse_lines(lines);
   let grid = create_grid(instructions);
   count_overlaps(grid)
