@@ -1,3 +1,5 @@
+use std::cmp::Ordering;
+
 pub fn part1(lines: Vec<String>) -> i64 {
   let parsed = lines.iter().map(|line| {
     let substrings: Vec<char> = line.chars().collect();
@@ -11,15 +13,19 @@ pub fn part1(lines: Vec<String>) -> i64 {
   }
   let mut gamma_bin = String::new();
   let mut epsilon_bin = String::new();
-  for sum in &sums {
-    if *sum > lines.len() as u32 / 2 {
-      gamma_bin.push('1');
-      epsilon_bin.push('0');
-    } else if *sum < lines.len() as u32 / 2 {
-      gamma_bin.push('0');
-      epsilon_bin.push('1');
-    } else {
-      panic!("Same number of 1s and 0s");
+  for sum in sums {
+    match sum.cmp(&(lines.len() as u32 / 2)) {
+      Ordering::Greater => {
+        gamma_bin.push('1');
+        epsilon_bin.push('0');
+      }
+      Ordering::Less => {
+        gamma_bin.push('0');
+        epsilon_bin.push('1');
+      }
+      Ordering::Equal => {
+        panic!("Same number of 1s and 0s");
+      }
     }
   }
   let gamma_rate = i32::from_str_radix(&gamma_bin, 2).unwrap();

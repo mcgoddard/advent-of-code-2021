@@ -15,7 +15,7 @@ pub fn part2(lines: Vec<String>) -> i64 {
   }
   let oxygen_rating = oxygen_ratings[0].iter().fold(0, |acc, digit| (acc << 1) + digit);
   let co2_rating = co2_ratings[0].iter().fold(0, |acc, digit| (acc << 1) + digit);
-  (oxygen_rating * co2_rating).try_into().unwrap()
+  (oxygen_rating * co2_rating).into()
 }
 
 fn sum_rating_index(index: usize, ratings: &Vec<Vec<u32>>) -> u32 {
@@ -32,8 +32,8 @@ fn filter_rating(index: usize, ratings: &Vec<Vec<u32>>, filter_to: u32) -> Vec<V
   }
   let sum = sum_rating_index(index, ratings);
   if sum as f32 >= ratings.len() as f32 / 2.0 {
-    ratings.iter().filter(|rating| rating[index] == filter_to).map(| rating | rating.clone()).collect()
+    ratings.iter().filter(|rating| rating[index] == filter_to).cloned().collect()
   } else {
-    ratings.iter().filter(|rating| rating[index] != filter_to).map(| rating | rating.clone()).collect()
+    ratings.iter().filter(|rating| rating[index] != filter_to).cloned().collect()
   }
 }

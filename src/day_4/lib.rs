@@ -17,7 +17,7 @@ pub fn parse_card_string(lines: Vec<String>) -> Vec<Vec<Vec<i32>>> {
   cards
 }
 
-pub fn check_card(card: &Vec<Vec<i32>>, called_numbers: &Vec<i32>) -> bool {
+pub fn check_card(card: &[Vec<i32>], called_numbers: &[i32]) -> bool {
   for row in card.iter() {
     let mut row_filled = true;
     for number in row.iter() {
@@ -43,13 +43,13 @@ pub fn check_card(card: &Vec<Vec<i32>>, called_numbers: &Vec<i32>) -> bool {
   false
 }
 
-pub fn calculate_score(card: &Vec<Vec<i32>>, called_numbers: &Vec<i32>, called_number: i32) -> i64 {
+pub fn calculate_score(card: &[Vec<i32>], called_numbers: &[i32], called_number: i32) -> i64 {
   let unmarked = card.iter().map(|row| {
     row.iter().filter(|number| !called_numbers.contains(number)).collect::<Vec<&i32>>()
   }).collect::<Vec<Vec<&i32>>>();
-  let unmarked_sum = unmarked.iter().map(|row| {
+  let unmarked_sum: i32 = unmarked.iter().map(|row| {
     row.iter().fold(0, |acc, number| acc + *number)
-  }).fold(0, |acc, number| acc + number);
+  }).sum();
   (unmarked_sum * called_number) as i64
 }
 

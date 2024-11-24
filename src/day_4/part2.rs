@@ -9,7 +9,7 @@ pub fn part2(lines: Vec<String>) -> i64 {
     if cards.len() == 1 && check_card(&cards[0], &called_numbers) {
       return calculate_score(&cards[0], &called_numbers, called_number);
     }
-    cards = cards.iter().filter(|card| !check_card(card, &called_numbers)).map(|card| card.clone()).collect();
+    cards = cards.iter().filter(|card| !check_card(card, &called_numbers)).cloned().collect();
   }
   panic!("No card filled");
 }
